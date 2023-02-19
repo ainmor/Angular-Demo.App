@@ -1,0 +1,8 @@
+ng new my-course-app
+ng serve
+ng serve -o  // is to open the app on the browser
+ng g c <component name> // to generate component
+
+ng add @angular/material
+https://material.angular.io/components
+https://typescriptlang.org
