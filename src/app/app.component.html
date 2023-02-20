@@ -1,9 +1,2 @@
-<!-- [title] is called directives -->
-<!-- *ngIf="" is called structural directives, it is intuitive, in the below case it decides whether to show the header or not -->
-<app-header [title]="headerTitle" *ngIf="isHeaderVisibile"></app-header>
-<mat-card>
-  <mat-card-content>Simple card is here!</mat-card-content>
-</mat-card>
-<button mat-raised-button color="primary">Primary</button>
-<app-profile-editor></app-profile-editor>
-<app-footer></app-footer>
+
+<router-outlet></router-outlet>

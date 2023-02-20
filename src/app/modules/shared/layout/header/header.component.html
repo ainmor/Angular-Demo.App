@@ -5,4 +5,19 @@
   <p *ngFor="let num of array">
     {{num}}
   </p>
+  <p>
+    <!-- Pipes lowercase, title, date -->
+    {{capitalText | titlecase | lowercase}}
+    <br>
+    {{dateValue | date: 'dd MM yyyy' }}
+    <br>
+    The price of this course is {{ amount | currency: 'EUR' }}
+    <br>
+    The number is {{ number | number: '1.0-4' }}
+
+    <br>
+    {{birthday | birthday}}
+    <br>
+    This app version is {{ version }}.
+  </p>
 </div>

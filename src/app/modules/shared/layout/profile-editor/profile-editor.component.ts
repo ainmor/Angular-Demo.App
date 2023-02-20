@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Observable, of, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-profile-editor',
   templateUrl: './profile-editor.component.html',
   styleUrls: ['./profile-editor.component.scss']
 })
-export class ProfileEditorComponent implements OnInit {
+export class ProfileEditorComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder) { }
 
+  profileFormSubscription : Subscription | undefined;
+
   profileForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: [''],
+    firstName: ['', [Validators.required, Validators.minLength(2)]],
+    lastName: ['', [Validators.required, Validators.minLength(2)]],    dateUTC: ['2022-10-05T14:48:00.000Z'],
     address: this.fb.group({
       street: [''],
       city: [''],
@@ -25,6 +28,7 @@ export class ProfileEditorComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.observeFormChanges();
   }
 
   get aliases() {
@@ -46,5 +50,15 @@ export class ProfileEditorComponent implements OnInit {
         street: '123 Drew Street'
       }
     });
+  }
+
+  private observeFormChanges(): void {
+    this.profileFormSubscription = this.profileForm?.valueChanges.subscribe((value) => {
+      console.log(value);
+    });
+  }
+
+  ngOnDestroy() {
+    this.profileFormSubscription?.unsubscribe();
   }
 }

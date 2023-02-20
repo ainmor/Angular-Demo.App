@@ -1,33 +1,44 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName">
-
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName">
-
+<div class="example-container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter first name</mat-label>
+    <input matInput placeholder="firstname" formControlName="firstName" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter last name</mat-label>
+    <input matInput placeholder="lastname" formControlName="lastName" required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="utcDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="utcDate"></mat-datepicker-toggle>
+      <mat-datepicker #utcDate></mat-datepicker>
+  </mat-form-field>
   <div formGroupName="address">
-    <h2>Address</h2>
-
-    <label for="street">Street: </label>
-    <input id="street" type="text" formControlName="street">
-
-    <label for="city">City: </label>
-    <input id="city" type="text" formControlName="city">
-
-    <label for="state">State: </label>
-    <input id="state" type="text" formControlName="state">
-
-    <label for="zip">Zip Code: </label>
-    <input id="zip" type="text" formControlName="zip">
-
+    <mat-form-field appearance="fill">
+      <mat-label>Enter street</mat-label>
+      <input matInput placeholder="street" formControlName="street">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter city</mat-label>
+      <input matInput placeholder="city" formControlName="city">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter state</mat-label>
+      <input matInput placeholder="state" formControlName="state">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter zip</mat-label>
+      <input matInput placeholder="zip" formControlName="zip">
+    </mat-form-field>
   </div>
-  <br />
+  </form>
+</div>
+<div class="example-button-row">
   <p>Complete the form to enable button.</p>
-  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
-
+  <button mat-raised-button [disabled]="!profileForm.valid" color="primary">Submit</button>
   <p>Form Status: {{ profileForm.status }}</p>
-  <br />
-  <button type="button" (click)="updateProfile()">Update Profile</button>
+  <button mat-raised-button (click)="updateProfile()" color="primary">Update Profile</button>
+</div>
 
-</form>
