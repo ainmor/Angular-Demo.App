@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../services/product.service";
+import {Product} from "../../models/Product.Interface";
 
 @Component({
   selector: 'app-product',
@@ -7,14 +8,15 @@ import {ProductService} from "../../services/product.service";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
+ products: Product[] = [];
   constructor(
     private productService: ProductService
   ) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe( (products) => {
-      console.log(products);
+    this.productService.getProducts().subscribe( (productResponse) => {
+      console.log(productResponse);
+      this.products = productResponse.products;
     }, (error) => {
       console.error(error);
     });

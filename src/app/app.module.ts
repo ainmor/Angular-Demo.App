@@ -16,6 +16,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {DashboardComponent} from "./modules/dashboard/dashboard.component";
 import { ProductComponent } from './modules/product/product.component';
 import {HttpClientModule} from "@angular/common/http";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatInputModule,
     RouterOutlet,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]
