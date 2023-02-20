@@ -14,12 +14,15 @@ import {HomeComponent} from "./modules/home/home.component";
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {DashboardComponent} from "./modules/dashboard/dashboard.component";
+import { ProductComponent } from './modules/product/product.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {DashboardComponent} from "./modules/dashboard/dashboard.component";
     MatIconModule,
     MatInputModule,
     RouterOutlet,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
