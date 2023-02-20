@@ -6,3 +6,9 @@ ng g c <component name> // to generate component
 ng add @angular/material
 https://material.angular.io/components
 https://typescriptlang.org
+
+
+git add .
+git status
+git commit -m "message"
+git push
