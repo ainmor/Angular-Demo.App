@@ -1,46 +1,40 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatLegacyCardModule as MatCardModule} from "@angular/material/legacy-card";
-import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
 import {SharedModule} from "./modules/shared/shared.module";
-import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
-import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
-import {HomeComponent} from "./modules/home/home.component";
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
-import {DashboardComponent} from "./modules/dashboard/dashboard.component";
-import { ProductComponent } from './modules/product/product.component';
+import {ProductModule} from "./modules/product/product.module";
+import {HomeModule} from "./modules/home/home.module";
+import {DashboardModule} from "./modules/dashboard/dashboard.module";
 import {HttpClientModule} from "@angular/common/http";
-import {NgOptimizedImage} from "@angular/common";
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    DashboardComponent,
-    ProductComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatButtonModule,
     SharedModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatInputModule,
     RouterOutlet,
     AppRoutingModule,
+    ProductModule,
+    HomeModule,
+    DashboardModule,
     HttpClientModule,
-    NgOptimizedImage
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

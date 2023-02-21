@@ -2,13 +2,23 @@ ng new my-course-app
 ng serve
 ng serve -o  // is to open the app on the browser
 ng g c <component name> // to generate component
-
+ng add @ngrx/store@latest
 ng add @angular/material
+ng add @ngrx/effects@latest
+
+sites:
+-----
 https://material.angular.io/components
 https://typescriptlang.org
+https://ngrx.io/guide/store
 
 
+git:
+-----
 git add .
 git status
 git commit -m "message"
 git push
+
+
+Shift + Enter = to import namespace for the function or member

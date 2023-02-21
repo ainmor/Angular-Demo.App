@@ -1,24 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductService} from "../../services/product.service";
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../../models/Product.Interface";
+import {Store} from "@ngrx/store";
+import {getProductsAction} from "../../state/product.actions";
+import {getProducts} from "../../state/product.selectors";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit {
- products: Product[] = [];
+export class ProductComponent implements OnInit, OnDestroy {
+  products$: Observable<Product[]> | undefined;
   constructor(
-    private productService: ProductService
+    private store: Store
   ) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe( (productResponse) => {
-      console.log(productResponse);
-      this.products = productResponse.products;
-    }, (error) => {
-      console.error(error);
-    });
+    this.store.dispatch(getProductsAction());
+    this.products$ = this.store.select(getProducts);
+  }
+
+  ngOnDestroy() {
+
   }
 }
